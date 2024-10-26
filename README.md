@@ -1,5 +1,5 @@
 # Barna Price Aparments Prediction
-![Uploading image.png…]()
+![Descripción de la imagen](/bcn.png)
 
 Members:
 - Blanca Jimenez 🇪🇸 🥘
