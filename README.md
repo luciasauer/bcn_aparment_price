@@ -3,7 +3,7 @@
 Members:
 - Blanca Jimenez 🇪🇸 🥘
 - Lucia Sauer 🇦🇷 🥩
-- Matias Borrel 🇵🇪 🐟
+- Matias Borrel 🇵🇪 🦙
 
 ## **🏠 Barcelona Apartment Price Prediction 📈**
 Welcome to the Barcelona Apartment Price Prediction project! This repository contains all the necessary code and documentation for participating in a Kaggle competition focused on predicting apartment prices in Barcelona for 2023.
