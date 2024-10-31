@@ -63,6 +63,8 @@ class MeanOperations_ByColumn:
         
         :param mean_column: Column name where you want to perform the operations.
         :param df: Input Dataframe
+        
+        :return None: It directly modifies the df that you pass to the MeanOperations_ByColumn Object.
         '''
         self.mean_column = mean_column
         self.df = df
@@ -73,6 +75,8 @@ class MeanOperations_ByColumn:
         
         :param group_by_column: Column to Group.
         :param round: number of decimals, rounds the mean value.
+        
+        :return None: It directly modifies the df that you pass to the MeanOperations_ByColumn Object.
         
         '''
         self.group_by_column = group_by_column
@@ -93,6 +97,8 @@ class MeanOperations_ByColumn:
         Fills the nan with the mean value of the column.
         
         :param round: Boolean, rounds the mean value.
+        
+        :return None: It directly modifies the df that you pass to the MeanOperations_ByColumn Object.
         '''
         mean = self.df[self.mean_column].mean()
         if round != None:
@@ -109,8 +115,35 @@ class Closest_Mean_Filler_numeric:
         self.column_to_fill = column_to_fill
         self.filler_column = filler_column
         self.df = df
+        
+        '''
+        Used to create an object that allows to Fills the selected numeric_column with his average value group by a categorial variable.
+        
+        :param round: Boolean, rounds the average value.
+        :param df: DataFrame to fill NaN values in.
+        :param column_to_fill: Name of the NUMERICAL column to fill.
+        :param filler_column: Name of the CATEGORICAL column that will group by.
+        :param probs: List of Probabilities of each category.
+        
+    
+        '''
 
     def fill_closest(self):
+        '''
+        Fills the selected numeric_column with his average value group by a categorial variable.
+        
+        :param None:
+        
+        :return None: It directly modifies the df that you pass to the Closest_Mean_Filler Object.
+        
+        :Example: 
+            Closest_Mean_Filler_numeric(df=test_df_clean, column_to_fill='num_crimes', filler_column='neighborhood', round=0 )
+            
+            Will fill the missing values of 'num_crimes' with his average value grouped by 'neighborhood'.
+            
+            Ex. If There is a missing 'num_crimes' entry, with the 'neighborhood' Sarria, it will fill with the average 'num_crime' in Sarria.
+        '''
+        
         # Step 1: Calculate the mean of column_to_fill based on filler_column groups
         column_to_fill_avg_dict = self.df.groupby(self.filler_column)[self.column_to_fill].mean()
         
@@ -155,6 +188,19 @@ class Closest_Mean_Filler_categorical:
         self.column_to_fill = column_to_fill
         self.filler_column = filler_column
         self.df = df
+        
+        
+        '''
+        Used to create an object that allows to Fills the selected categorical_column with his average value group by a numeric variable.
+        
+        :param round: Boolean, rounds the average value.
+        :param df: DataFrame to fill NaN values in.
+        :param column_to_fill: Name of the CATEGORICAL column to fill.
+        :param filler_column: Name of the NUMERICAL column that will group by.
+        :param probs: List of Probabilities of each category.
+        
+    
+        '''
 
     def fill_closest(self):
         # Step 1: Calculate the mean of filler_column (e.g., 'num_crimes') for each unique value in column_to_fill (e.g., 'neighborhood')
