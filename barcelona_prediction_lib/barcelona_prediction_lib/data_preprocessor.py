@@ -54,6 +54,7 @@ class NaNFiller:
         missing_values = df[column_name].isnull().sum()
         randomizer_vector = np.random.choice(categories_list, size=missing_values, p=probs_list)
         df.loc[df[column_name].isna(), column_name] = randomizer_vector
+        return df
 
 class MeanOperations_ByColumn:
     def __init__(self, mean_column, df):
@@ -124,8 +125,6 @@ class Closest_Mean_Filler_numeric:
         :param column_to_fill: Name of the NUMERICAL column to fill.
         :param filler_column: Name of the CATEGORICAL column that will group by.
         :param probs: List of Probabilities of each category.
-        
-    
         '''
 
     def fill_closest(self):
